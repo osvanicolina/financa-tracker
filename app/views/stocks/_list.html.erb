@@ -1,0 +1,29 @@
+<% if @tracked_stocks.any? %>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Ticker</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @tracked_stocks.each do |stock| %>
+                <tr>
+                    <td>
+                        <%= stock.ticker %>
+                    </td>
+                    <td>
+                        <%= stock.name %>
+                    </td>
+                    <td>
+                        <%= stock.last_price %>
+                    </td>
+                    <td>Actions</td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
