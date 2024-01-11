@@ -47,6 +47,7 @@ gem "sassc-rails"
 
 #Use bootstrap 5
 gem 'bootstrap', '~> 5.2.0'
+gem "font-awesome-rails"
 
 gem 'devise'
 gem 'devise-bootstrap-views'
