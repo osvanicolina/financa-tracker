@@ -5,7 +5,7 @@
         Search Stocks
     </h3>
 
-    <%= form_tag '#', method: :get, class: "form-inline" do %>
+    <%= form_tag search_stock_path class: "form-inline" do %>
         <div class="form-group row">
             <div class="col-sm-9 pe-0">
                 <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control" %>
@@ -19,4 +19,7 @@
         </div>
     <% end %>
 </div>
+
+
+<%= render "users/result" %>
 
