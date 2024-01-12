@@ -29,7 +29,12 @@
             </ul>
             <ul class="navbar-nav">
                 <% if user_signed_in? %>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
+                        <%= fa_icon "user", class: "me-1" %>
+                        <%= current_user.full_name %>
+                    </li>
+
+                    <li class="nav-item ms-1">
                         <%= link_to "Logout", destroy_user_session_path, class: "btn btn-danger", data: { turbo_method: :delete } %>
                     </li>
                 <% else %>
