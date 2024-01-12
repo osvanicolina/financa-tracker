@@ -21,7 +21,9 @@
                     <td>
                         <%= stock.last_price %>
                     </td>
-                    <td>Actions</td>
+                    <td>
+                        <%= link_to 'Remove', user_stock_path(user: current_user, id: stock.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>
