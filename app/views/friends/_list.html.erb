@@ -31,6 +31,11 @@
                             <%= friend.last_name %>
                         </td>
                         <td>
+                            <%= link_to 'View Profile',
+                            user_path(friend),
+                            class: "btn btn-sm btn-success"
+                            %>
+                            
                             <%= link_to 'Stop Following',
                             friendship_path(friend),
                             class: "btn btn-sm btn-warning",

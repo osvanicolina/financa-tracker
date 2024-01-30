@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @tracked_stocks = @user.stocks
+  end
+
   def my_portfolio
+    @user = current_user
     if user_signed_in?
       @tracked_stocks = current_user.stocks
     else
