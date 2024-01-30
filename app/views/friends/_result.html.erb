@@ -1,0 +1,27 @@
+<%= turbo_frame_tag 'results_turbo_stream' do %>
+    <%= render 'layouts/messages' %>
+
+    <% if @friend %>
+        <div class="card my-2">
+            <div class="card-header">
+                    Friend
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Email:</strong> <%= @friend %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Name:</strong> <%= @friend %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Price:</strong> <%= @friend %>
+                    </li>
+
+                    <li class=list-group-item>
+                        <%= button_to 'Follow friend?', '#', data: { turbo: false, turbo_method: :post }, class: 'btn btn-sm btn-warning ms-auto' %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+<% end %>

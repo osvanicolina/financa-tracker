@@ -1,0 +1,23 @@
+<div class="search-area">
+    <h3> Friends </h3>
+
+    <%= form_tag search_friend_path class: "form-inline" do %>
+        <div class="form-group row">
+            <div class="col-sm-9 pe-0">
+                <%= text_field_tag :friend, params[:friend], placeholder: "Friend's name", autofocus: true, class: "form-control form-control" %>
+            </div>
+
+            <div class="col-sm-3 ps-0">
+                <%= button_tag type: :submit, class: "btn btn-primary" do %>
+                    <%= fa_icon "search" %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
+    
+<%= render "friends/result" %>
+
+<% if !@friends.empty? %>
+    <% render 'friends/list' %>
+<% end %>
