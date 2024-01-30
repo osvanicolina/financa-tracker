@@ -32,9 +32,9 @@
                         </td>
                         <td>
                             <%= link_to 'Stop Following',
-                            '#',
+                            friendship_path(friend),
                             class: "btn btn-sm btn-warning",
-                            data: { turbo_method: :delete }
+                            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
                             %>
                         </td>
                     </tr>

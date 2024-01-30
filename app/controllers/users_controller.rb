@@ -13,13 +13,14 @@ class UsersController < ApplicationController
 
   def search
     if params[:friend].present?
-      @friend = params[:friend]
-      if @friend
+      @friends = User.search(params[:friend])
+      @friends = current_user.except_current_user(@friends)
+      if !@friends.empty?
         render turbo_stream: turbo_stream.replace('results_turbo_stream', partial: 'friends/result')
-        else 
-            flash.now[:alert] = "Please enter a valid symbol to search"
-            render turbo_stream: turbo_stream.replace('results_turbo_stream', partial: 'friends/result')
-        end
+      else 
+        flash.now[:alert] = "Not user found with that name or email"
+        render turbo_stream: turbo_stream.replace('results_turbo_stream', partial: 'friends/result')
+      end
     else
         flash.now[:alert] = "Please enter a symbol to search"
         render turbo_stream: turbo_stream.replace('results_turbo_stream', partial: 'friends/result')

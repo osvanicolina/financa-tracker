@@ -1,27 +1,36 @@
 <%= turbo_frame_tag 'results_turbo_stream' do %>
     <%= render 'layouts/messages' %>
 
-    <% if @friend %>
-        <div class="card my-2">
-            <div class="card-header">
-                    Friend
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <strong>Email:</strong> <%= @friend %>
-                    </li>
-                    <li class="list-group-item">
-                        <strong>Name:</strong> <%= @friend %>
-                    </li>
-                    <li class="list-group-item">
-                        <strong>Price:</strong> <%= @friend %>
-                    </li>
+    <% if @friends && !@friends.empty? %>
+        <% @friends.each do |friend| %>
+            <div class="card my-2 me-2">
+                <div class="card-header">
+                        Friend
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Name:</strong> <%= friend.full_name %>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Email:</strong> <%= friend.email %>
+                        </li>
 
-                    <li class=list-group-item>
-                        <%= button_to 'Follow friend?', '#', data: { turbo: false, turbo_method: :post }, class: 'btn btn-sm btn-warning ms-auto' %>
-                    </li>
-                </ul>
+                        <li class="list-group-item d-flex align-items-center">
+                            <%= link_to 'View profile', '#', class: "btn btn-sm btn-success me-2" %>
+                            <% if current_user.not_friends_with?(friend) %>
+                                <%= button_to 'Follow friend?', 
+                                friendships_path(friend: friend),
+                                data: { turbo: false, turbo_method: :post }, 
+                                class: 'btn btn-sm btn-warning ms-auto' %>
+                            <% else %>
+                                <span class="badge bg-secondary">
+                                    You are friends
+                                </span>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        <% end %>
     <% end %>
 <% end %>

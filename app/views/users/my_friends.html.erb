@@ -14,10 +14,11 @@
             </div>
         </div>
     <% end %>
+    <%= render "friends/result" %>
+    <% if !@friends.empty? %>
+        <%= render 'friends/list' %>
+    <% end %>
 </div>
     
-<%= render "friends/result" %>
 
-<% if !@friends.empty? %>
-    <% render 'friends/list' %>
-<% end %>
+
